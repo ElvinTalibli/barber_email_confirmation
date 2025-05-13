@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arcadia Bərbər - E-poçt Təsdiqləndi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4EE1A0;
@@ -144,43 +144,55 @@
             }
         }
         
-        .logo-container {
-            display: flex;
-            justify-content: center;
+        /* Arcadia Başlıq Stili */
+        .brand-title {
+            text-align: center;
             margin-bottom: 30px;
-        }
-        
-        .logo {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 15px 30px rgba(78, 225, 160, 0.2);
             position: relative;
-            overflow: hidden;
-            animation: pulse 3s infinite;
+            animation: title-appear 1s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
         
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 15px 30px rgba(78, 225, 160, 0.2);
+        @keyframes title-appear {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
             }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 20px 40px rgba(78, 225, 160, 0.3);
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
-        .logo svg {
-            width: 50px;
-            height: 50px;
-            fill: white;
+        .brand-title h2 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
             position: relative;
-            z-index: 2;
+        }
+        
+        .brand-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .brand-title p {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
         }
         
         .success-badge {
@@ -360,6 +372,10 @@
                 padding: 30px 20px;
             }
             
+            .brand-title h2 {
+                font-size: 32px;
+            }
+            
             h1 {
                 font-size: 22px;
             }
@@ -388,13 +404,9 @@
     </div>
     
     <div class="card">
-        <div class="logo-container">
-            <div class="logo">
-                <!-- Scissors icon for barber -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M8,7C6.34,7 5,8.34 5,10C5,11.66 6.34,13 8,13C9.66,13 11,11.66 11,10C11,8.34 9.66,7 8,7M8,11C7.45,11 7,10.55 7,10C7,9.45 7.45,9 8,9C8.55,9 9,9.45 9,10C9,10.55 8.55,11 8,11M8,3C10.21,3 12,4.79 12,7C12,8.5 11.2,9.77 10,10.46V10.46C11.2,11.15 12,12.42 12,13.94V16H13.5C13.57,16 13.64,16 13.71,16C14.92,15.3 16,13.8 16,12C16,10.92 15.61,9.86 15,9C15.61,8.14 16,7.08 16,6C16,3.03 13.39,0.56 10.1,1.06C8.19,1.33 6.57,2.94 6.32,4.83C6.28,5.23 6.59,5.5 7,5.5H8.5V5.21C8.5,4.55 9.05,4 9.71,4H9.74C10.47,4 11.07,4.6 11.07,5.33C11.07,5.95 10.63,6.47 10.03,6.57L10.45,8.31L9.5,8.5C9.17,6.85 7.89,5.57 6.24,5.25L6.3,3.61C6.8,3.23 7.38,3 8,3M16,9C17.66,9 19,10.34 19,12C19,13.66 17.66,15 16,15C14.34,15 13,13.66 13,12C13,10.34 14.34,9 16,9M16,13C16.55,13 17,12.55 17,12C17,11.45 16.55,11 16,11C15.45,11 15,11.45 15,12C15,12.55 15.45,13 16,13M13.71,17C13.58,17.68 13.04,18.22 12.36,18.35C12.16,18.4 11.91,18.44 11.82,18.44L11.06,17H6.5C5.77,17 5.12,16.5 5.03,15.77C4.91,14.97 5.55,14.3 6.33,14.3H10.5L11.17,15.85C11.55,15.93 11.89,16.14 12.13,16.43C12.61,16.34 12.82,15.85 12.75,15.44L12.28,14.31C12,14.11 11.5,14 11.5,14H6.33C4.67,14 3.3,15.4 3.54,17.07C3.72,18.35 4.83,19.37 6.13,19.42C6.25,19.43 6.38,19.43 6.5,19.42H10.5L11.39,21C11.5,21.25 11.77,21.39 12.03,21.32C12.5,21.2 12.7,20.64 12.41,20.25L11.88,19.5H12.2C13.25,19.5 14.18,18.83 14.5,17.85L15.06,16.33L13.71,17Z" />
-                </svg>
-            </div>
+        <div class="brand-title">
+            <h2>ARCADIA</h2>
+            <p>BƏRBƏR</p>
         </div>
         
         <div class="success-badge">
